@@ -9,13 +9,14 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    height: 500px;
-    width: 500px;
+    height: 320px;
+    width: 320px;
 }
 
 .gridBox{
     border: 1px solid blue;
     box-sizing: border-box;
-    flex: auto;
+    height: 20px;
+    width: 20px;
 
 }

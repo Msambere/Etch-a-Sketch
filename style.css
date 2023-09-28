@@ -1,0 +1,21 @@
+
+#header {
+    box-sizing: border-box;
+    margin: 10px;
+    text-align: center;
+}
+.container{
+    border: 3px dashed black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 500px;
+    width: 500px;
+}
+
+.gridBox{
+    border: 1px solid blue;
+    box-sizing: border-box;
+    flex: auto;
+
+}

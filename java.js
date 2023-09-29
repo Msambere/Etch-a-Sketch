@@ -1,9 +1,33 @@
 const container = document.querySelector('#screen');
 
 //Set initial screen
-let x = 16;
-let boxCount = x*x;
-gridMaker(boxCount);
+let boxCount = 16;
+makeGrid(boxCount);
+
+function makeGrid(boxCount){
+    for (i=0; i<boxCount; i++){
+    let gridCol = document.createElement('div');
+    gridCol.classList.add('gridColumn');
+    container.appendChild(gridCol);
+    };
+    const gridColumns = Array.from(document.querySelectorAll('.gridColumn'));
+    gridColumns.forEach(column => {
+        for (i=0; i<boxCount; i++){
+        let gridBox = document.createElement('div');
+        gridBox.classList.add('gridBox');
+        column.appendChild(gridBox);
+        };
+    });
+    
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
+};
+
+function addShading(e){
+    let gridBox = e.target;
+    gridBox.classList.add('shaded');
+};
+
 
 
 //Change grid size
@@ -12,27 +36,10 @@ resizer.addEventListener('click', changeGridSize);
 
 
 function changeGridSize(){
-    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-    gridBoxes.forEach(box => container.removeChild(box));
-    let x = parseInt(prompt("How many rows/columns?"));
-    boxCount= x*x;
-    gridMaker(boxCount);
-};
-
-
-function gridMaker(boxCount){
-    for (i=0; i<boxCount; i++){
-    let gridBox = document.createElement('div');
-    gridBox.classList.add('gridBox');
-    container.appendChild(gridBox);
-    };
-    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-    gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
-};
-
-function addShading(e){
-    let gridBox = e.target;
-    gridBox.classList.add('shaded');
+    const gridColumns = Array.from(document.querySelectorAll('.gridColumn'));
+    gridColumns.forEach(box => container.removeChild(box));
+    let boxCount = parseInt(prompt("How many rows/columns?"));
+    makeGrid(boxCount);
 };
 
 

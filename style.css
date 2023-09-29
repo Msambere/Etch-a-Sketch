@@ -24,14 +24,16 @@ body {
     
 }
 
+.gridColumn{
+display: flex;
+flex-flow: column wrap;
+flex: 1;
+}
+
 .gridBox{
     border: 1px solid black;
     box-sizing: border-box;
-    height: 35px;
-    width:35px;
-    flex-shrink: 1;
-    flex-grow: 1;
-
+    flex: 1;
 }
 
 .shaded {

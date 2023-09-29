@@ -1,8 +1,25 @@
 const container = document.querySelector('#screen');
 
-//let x = prompt("How many rows/columns?");
-//let boxCount = x*x;
-//let setFlexBasis = 100/x;
+let x = 16;
+let boxCount = x*x;
+gridMaker(boxCount);
+
+
+const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
+
+const resizer = document.querySelector('#resizer');
+resizer.addEventListener('click', changeGridSize);
+
+
+function changeGridSize(){
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    gridBoxes.forEach(box => container.removeChild(box));
+    let x = parseInt(prompt("How many rows/columns?"));
+    boxCount= x*x;
+    gridMaker(boxCount);
+};
+
 
 function gridMaker(boxCount){
     for (i=0; i<boxCount; i++){
@@ -15,15 +32,18 @@ function gridMaker(boxCount){
 function addShading(e){
     let gridBox = e.target;
     gridBox.classList.add('shaded');
-}
+};
 
 
-gridMaker(16*16);
-const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
 
 /*
 TDL:
+
+const eraser = document.querySelector('#eraser');
+eraser.addEventListener('click', console.log('they wanna erase'));
+
+const pen = document.querySelector('#pen');
+pen.addEventListener('click', console.log('they wanna draw'));
 
 
 

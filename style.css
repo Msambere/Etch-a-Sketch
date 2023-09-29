@@ -15,11 +15,12 @@ body {
 .container{
 
     border: 5px solid black;
+    height: 560px;
+    width: 560px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    height: 560px;
-    width: 560px;
+    align-items: stretch;
     
 }
 
@@ -28,7 +29,7 @@ body {
     box-sizing: border-box;
     height: 35px;
     width:35px;
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-grow: 1;
 
 }

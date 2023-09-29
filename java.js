@@ -1,13 +1,12 @@
 const container = document.querySelector('#screen');
 
+//Set initial screen
 let x = 16;
 let boxCount = x*x;
 gridMaker(boxCount);
 
 
-const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
-
+//Change grid size
 const resizer = document.querySelector('#resizer');
 resizer.addEventListener('click', changeGridSize);
 
@@ -27,6 +26,8 @@ function gridMaker(boxCount){
     gridBox.classList.add('gridBox');
     container.appendChild(gridBox);
     };
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
 };
 
 function addShading(e){

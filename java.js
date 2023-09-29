@@ -38,7 +38,10 @@ resizer.addEventListener('click', changeGridSize);
 function changeGridSize(){
     const gridColumns = Array.from(document.querySelectorAll('.gridColumn'));
     gridColumns.forEach(box => container.removeChild(box));
-    let boxCount = parseInt(prompt("How many rows/columns?"));
+    let boxCount = 0
+    do {
+         boxCount = parseInt(prompt("How many rows/columns?"));
+    } while (boxCount<=0 || boxCount>100);
     makeGrid(boxCount);
 };
 
@@ -53,6 +56,6 @@ eraser.addEventListener('click', console.log('they wanna erase'));
 const pen = document.querySelector('#pen');
 pen.addEventListener('click', console.log('they wanna draw'));
 
-
+msambere/JS-Fundamentals-3/number-game-errors.html check to see how to put an in-window user input box
 
 */

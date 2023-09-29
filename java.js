@@ -25,7 +25,7 @@ function makeGrid(boxCount){
 
 function addShading(e){
     let gridBox = e.target;
-    gridBox.classList.add('shaded');
+    gridBox.classList.add('shadedBlack');
 };
 
 
@@ -49,6 +49,14 @@ function changeGridSize(){
 
 /*
 TDL:
+
+-- create an eraser that uses clicking
+-- add a reset button that clears shading, but doesn't ask for new sizing
+--create a pen color selector that changes the shading class
+--Rather than a simple color change from black to white, each interaction should randomize the square’s RGB value 
+entirely.
+--Additionally, implement a progressive darkening effect where each interaction adds 10% more black or color 
+to the square. The objective is to achieve a completely black square only after ten interactions.
 
 const eraser = document.querySelector('#eraser');
 eraser.addEventListener('click', console.log('they wanna erase'));

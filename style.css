@@ -38,6 +38,12 @@ flex: 1;
 
 .shadedBlack {
     background-color: black;
+    opacity: 0.1;
+}
+
+.shadedBlack2 {
+    background-color: black;
+    opacity:1;
 }
 /*
 TDL

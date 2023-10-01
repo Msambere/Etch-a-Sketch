@@ -21,11 +21,37 @@ function makeGrid(boxCount){
     
     const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addOpacity));
 };
 
 function addShading(e){
+    let gridBox =e.target;
+    gridBox.style.backgroundColor ='black';
+};
+
+function addOpacity(e){
     let gridBox = e.target;
-    gridBox.classList.add('shadedBlack');
+    if (gridBox.style.opacity ==='0.9'){
+        gridBox.style.opacity ='1';
+    }else if (gridBox.style.opacity ==='0.8'){
+        gridBox.style.opacity ='0.9';
+    }else if (gridBox.style.opacity ==='0.7'){
+        gridBox.style.opacity ='0.8';
+    }else if (gridBox.style.opacity ==='0.6'){
+        gridBox.style.opacity ='0.7';
+    }else if (gridBox.style.opacity ==='0.5'){
+        gridBox.style.opacity ='0.6';
+    }else if (gridBox.style.opacity === '0.4'){
+        gridBox.style.opacity = '0.5';
+    }else if (gridBox.style.opacity ==='0.3'){
+        gridBox.style.opacity ='0.4';
+    }else if (gridBox.style.opacity ==='0.2'){
+        gridBox.style.opacity ='0.3';
+    }else if (gridBox.style.opacity ==='0.1'){
+        gridBox.style.opacity ='0.2';
+    }else if (gridBox.style.opacity ===''){
+    gridBox.style.opacity='0.1';
+    };
 };
 
 
@@ -47,6 +73,7 @@ function changeGridSize(){
 
 
 
+
 /*
 TDL:
 
@@ -55,8 +82,6 @@ TDL:
 --create a pen color selector that changes the shading class
 --Rather than a simple color change from black to white, each interaction should randomize the square’s RGB value 
 entirely.
---Additionally, implement a progressive darkening effect where each interaction adds 10% more black or color 
-to the square. The objective is to achieve a completely black square only after ten interactions.
 
 const eraser = document.querySelector('#eraser');
 eraser.addEventListener('click', console.log('they wanna erase'));

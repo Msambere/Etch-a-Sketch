@@ -22,6 +22,8 @@ function makeGrid(boxCount){
     const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addOpacity));
+    gridBoxes.forEach(box => box.addEventListener('click',removeBackground));
+    
 };
 
 function addShading(e){
@@ -54,8 +56,6 @@ function addOpacity(e){
     };
 };
 
-
-
 //Change grid size
 const resizer = document.querySelector('#resizer');
 resizer.addEventListener('click', changeGridSize);
@@ -71,7 +71,15 @@ function changeGridSize(){
     makeGrid(boxCount);
 };
 
+//Eraser function
+//const eraser = document.querySelector('#eraser');
+//eraser.addEventListener('click', eraseBox);
 
+function removeBackground(e){
+    let gridBox =e.target;
+    gridBox.style.backgroundColor ='';
+    gridBox.style.opacity='';
+};
 
 
 /*

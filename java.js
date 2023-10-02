@@ -124,9 +124,7 @@ function removeBackground(e){
 
 // Background reset 
 function resetBackground() {
-    console.log('you clicked the reset button');
     const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-    console.log(gridBoxes)
     gridBoxes.forEach( box => box.style.backgroundColor = '');
     gridBoxes.forEach( box => box.style.opacity = '');
 

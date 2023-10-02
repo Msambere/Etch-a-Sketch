@@ -20,15 +20,47 @@ function makeGrid(boxCount){
     });
     
     const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
-    gridBoxes.forEach(box => box.addEventListener('mouseover', addShading));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addOpacity));
-    gridBoxes.forEach(box => box.addEventListener('click',removeBackground));
+    gridBoxes.forEach(box => box.addEventListener('dblclick',removeBackground));
+
+
+    const colorButton = document.querySelector('#color');
+    colorButton.addEventListener('click', switchToColor);
+
+    const greyscaleButton = document.querySelector('#greyscale');
+    greyscaleButton.addEventListener('click',switchToGreyscale);
+
+    const resetButton = document.querySelector('#reset');
+    resetButton.addEventListener('click',resetBackground);
+    
     
 };
-
-function addShading(e){
+//Color and Shading functions
+function addBlack(e){
     let gridBox =e.target;
+    if (gridBox.style.backgroundColor!=''){
+    }else {
     gridBox.style.backgroundColor ='black';
+    };
+};
+
+function addRandomColor(e) {
+    let gridBox =e.target;
+    if (gridBox.style.backgroundColor!=''){
+    }else {
+        gridBox.style.backgroundColor = makeRandColor();
+    };
+};
+
+function makeRandColor(){
+    let colorArray =[];
+    for (i=0; i<3; i++){
+        let color = Math.floor(Math.random()*255 +1);
+        colorArray.push(color); 
+    };
+    let randColor = `rgb(${colorArray[0]},${colorArray[1]},${colorArray[2]})`;
+    return randColor
 };
 
 function addOpacity(e){
@@ -56,6 +88,18 @@ function addOpacity(e){
     };
 };
 
+function switchToColor(e){
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addRandomColor));
+    gridBoxes.forEach(box => box.removeEventListener('mouseover', addBlack));
+};
+
+function switchToGreyscale(e){
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    gridBoxes.forEach(box => box.removeEventListener('mouseover', addRandomColor));
+    gridBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
+};
+
 //Change grid size
 const resizer = document.querySelector('#resizer');
 resizer.addEventListener('click', changeGridSize);
@@ -72,30 +116,29 @@ function changeGridSize(){
 };
 
 //Eraser function
-//const eraser = document.querySelector('#eraser');
-//eraser.addEventListener('click', eraseBox);
-
 function removeBackground(e){
     let gridBox =e.target;
     gridBox.style.backgroundColor ='';
     gridBox.style.opacity='';
 };
 
+// Background reset 
+function resetBackground() {
+    console.log('you clicked the reset button');
+    const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
+    console.log(gridBoxes)
+    gridBoxes.forEach( box => box.style.backgroundColor = '');
+    gridBoxes.forEach( box => box.style.opacity = '');
+
+};
+
 
 /*
 TDL:
 
--- create an eraser that uses clicking
--- add a reset button that clears shading, but doesn't ask for new sizing
---create a pen color selector that changes the shading class
---Rather than a simple color change from black to white, each interaction should randomize the square’s RGB value 
-entirely.
+-- Disable color/grayscale button when already in use (change the color of button)
 
-const eraser = document.querySelector('#eraser');
-eraser.addEventListener('click', console.log('they wanna erase'));
 
-const pen = document.querySelector('#pen');
-pen.addEventListener('click', console.log('they wanna draw'));
 
 msambere/JS-Fundamentals-3/number-game-errors.html check to see how to put an in-window user input box
 

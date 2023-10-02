@@ -36,6 +36,9 @@ flex: 1;
     flex: 1;
 }
 
+.inUse{
+    display: none;
+}
 
 /*
 TDL

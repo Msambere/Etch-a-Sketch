@@ -27,9 +27,12 @@ function makeGrid(boxCount){
 
     const colorButton = document.querySelector('#color');
     colorButton.addEventListener('click', switchToColor);
+    colorButton.addEventListener('click', toggleInUse )
 
     const greyscaleButton = document.querySelector('#greyscale');
+    greyscaleButton.classList.add('inUse');
     greyscaleButton.addEventListener('click',switchToGreyscale);
+    greyscaleButton.addEventListener('click',toggleInUse);
 
     const resetButton = document.querySelector('#reset');
     resetButton.addEventListener('click',resetBackground);
@@ -99,6 +102,14 @@ function switchToGreyscale(e){
     gridBoxes.forEach(box => box.removeEventListener('mouseover', addRandomColor));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
 };
+
+function toggleInUse(){
+    const colorButton = document.querySelector('#color');
+    colorButton.classList.toggle('inUse');
+    const greyscaleButton = document.querySelector('#greyscale');
+    greyscaleButton.classList.toggle('inUse')
+    
+}
 
 //Change grid size
 const resizer = document.querySelector('#resizer');

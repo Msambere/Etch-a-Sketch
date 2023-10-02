@@ -22,7 +22,7 @@ function makeGrid(boxCount){
     const gridBoxes = Array.from(document.querySelectorAll('.gridBox'));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addBlack));
     gridBoxes.forEach(box => box.addEventListener('mouseover', addOpacity));
-    gridBoxes.forEach(box => box.addEventListener('dblclick',removeBackground));
+    gridBoxes.forEach(box => box.addEventListener('click',removeBackground));
 
 
     const colorButton = document.querySelector('#color');
@@ -144,8 +144,6 @@ function resetBackground() {
 
 /*
 TDL:
-
--- Disable color/grayscale button when already in use (change the color of button)
 
 
 
